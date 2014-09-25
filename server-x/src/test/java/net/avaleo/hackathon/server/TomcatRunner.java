@@ -17,7 +17,7 @@ public class TomcatRunner {
 
         tomcat.setPort(8080);
 
-        tomcat.addWebapp("/receipt2erp", new File(webappDirLocation).getAbsolutePath());
+        tomcat.addWebapp("/server-x", new File(webappDirLocation).getAbsolutePath());
         System.out.println("configuring app with basedir: " + new File("./" + webappDirLocation).getAbsolutePath());
 
         tomcat.start();
