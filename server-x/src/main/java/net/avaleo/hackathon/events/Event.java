@@ -10,7 +10,16 @@ public class Event {
     private String sender;
     private DateTime timestamp;
 
-    public String getMessage() {
+	public Event() {
+	}
+
+	public Event(String message, String sender, DateTime timestamp) {
+		this.message = message;
+		this.sender = sender;
+		this.timestamp = timestamp;
+	}
+
+	public String getMessage() {
         return message;
     }
 
