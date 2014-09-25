@@ -15,12 +15,12 @@
     <!-- Used to serve static resources like css, images and javascript files-->
     <mvc:resources mapping="/resources/**" location="/resources/" />
 
-    <bean id="websocket" class="net.avaleo.hackathon.controllers.MessageRequestHandler"/>
+    <bean id="websocket" class="net.avaleo.hackathon.controllers.CaseFlowMessagingWebSocket"/>
 
     <websocket:handlers>
         <websocket:mapping path="/websocket" handler="websocket"/>
-        <websocket:handshake-interceptors>
-            <bean class="co.syntx.example.websocket.HandshakeInterceptor"/>
+        <!--<websocket:handshake-interceptors> -->
+        <!--    <bean class="co.syntx.example.websocket.HandshakeInterceptor"/> -->
         <!-- </websocket:handshake-interceptors> -->
     </websocket:handlers>
 </beans>

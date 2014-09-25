@@ -9,7 +9,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
  * Created by ras on 25-09-14.
  */
 
-public class MessageRequestHandler extends TextWebSocketHandler {
+public class CaseFlowMessagingWebSocket extends TextWebSocketHandler {
     @Autowired
     private SessionContainer sessionContainer;
 
