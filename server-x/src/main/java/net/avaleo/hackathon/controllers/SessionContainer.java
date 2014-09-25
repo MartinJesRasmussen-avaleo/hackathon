@@ -1,7 +1,7 @@
 package net.avaleo.hackathon.controllers;
 
+import net.avaleo.hackathon.listener.SocketListener;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.socket.WebSocketSession;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,17 +11,17 @@ import java.util.List;
  */
 @Configuration
 public class SessionContainer {
-    private List<WebSocketSession> sessions = new ArrayList<WebSocketSession>();
+    private List<SocketListener> sessions = new ArrayList<SocketListener>();
 
     public SessionContainer() {
         System.out.println("SESSION CONTAINER INITIALIZED");
     }
 
-    public void addSession(WebSocketSession session) {
+    public void addSession(SocketListener session) {
         sessions.add(session);
     }
 
-    public List<WebSocketSession> getSessions() {
+    public List<SocketListener> getSessions() {
         return sessions;
     }
 }

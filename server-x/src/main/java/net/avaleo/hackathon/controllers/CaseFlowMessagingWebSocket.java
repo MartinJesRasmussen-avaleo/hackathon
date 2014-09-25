@@ -1,7 +1,9 @@
 package net.avaleo.hackathon.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import net.avaleo.hackathon.dao.HackEsperDaoInterface;
 import net.avaleo.hackathon.events.Event;
+import net.avaleo.hackathon.listener.SocketListener;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.socket.TextMessage;
@@ -14,11 +16,13 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 public class CaseFlowMessagingWebSocket extends TextWebSocketHandler {
     @Autowired
-    private SessionContainer sessionContainer;
+    private HackEsperDaoInterface webSocketDao;
 
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-        sessionContainer.addSession(session);
+        SocketListener listener = new SocketListener();
+        listener.setSession(session);
+        webSocketDao.registerListener(listener);
         super.handleTextMessage(session, message);
         Event event = new Event();
         event.setMessage("This is the body part of the message!");

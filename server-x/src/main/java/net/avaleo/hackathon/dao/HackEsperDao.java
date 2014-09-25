@@ -4,7 +4,9 @@ import com.espertech.esper.client.EPServiceProvider;
 import com.espertech.esper.client.EPServiceProviderManager;
 import com.espertech.esper.client.EPStatement;
 import net.avaleo.hackathon.events.Event;
+import org.springframework.context.annotation.Configuration;
 
+@Configuration
 public class HackEsperDao implements HackEsperDaoInterface {
     private final static EPServiceProvider epService = EPServiceProviderManager.getDefaultProvider();
 
