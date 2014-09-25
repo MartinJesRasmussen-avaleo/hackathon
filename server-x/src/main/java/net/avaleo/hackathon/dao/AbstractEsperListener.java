@@ -8,8 +8,12 @@ public abstract class AbstractEsperListener implements UpdateListener {
 
     @Override
     public void update(EventBean[] events, EventBean[] oldEvents) {
-        doUpdate((Event) events[0].getUnderlying());
+        try {
+            doUpdate((Event) events[0].getUnderlying());
+        } catch (Exception e) {
+            System.err.println(e.getStackTrace());
+        }
     }
 
-    public abstract void doUpdate(Event event);
+    public abstract void doUpdate(Event event) throws Exception;
 }

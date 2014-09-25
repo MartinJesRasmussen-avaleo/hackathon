@@ -38,27 +38,15 @@ public class CaseFlowMessagingWebSocket extends TextWebSocketHandler {
 //        String msg = mapper.writeValueAsString(event);
 //        TextMessage reply = new TextMessage(msg);
 
-		ObjectMapper mapper = getObjectMapper();
-
         while (true) {
-			String msg = mapper.writeValueAsString(getEvent());
-			TextMessage reply = new TextMessage(msg);
-            session.sendMessage(reply);
-
             try {
                 Thread.sleep(5000);
+                webSocketDao.publish(getEvent());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
-
-	private ObjectMapper getObjectMapper() {
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.setTimeZone(TimeZone.getDefault());
-		mapper.registerModule(new JodaModule());
-		return mapper;
-	}
 
 	private Event getEvent() {
 		Event event = new Event();
