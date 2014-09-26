@@ -38,7 +38,7 @@ public class CaseFlowMessagingWebSocket extends TextWebSocketHandler {
         //while (true) {
         //    try {
         //        Thread.sleep(5000);
-                webSocketDao.publish(getEvent());
+//                webSocketDao.publish(getEvent());
         //    } catch (InterruptedException e) {
         //        e.printStackTrace();
         //    }
