@@ -13,41 +13,43 @@
 
     </header>
     <body>
-        <div ng-controller="CfChatCtrl" ng-init="connect()">
-        <br/>
-            <div class="container">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <form role="form">
-                                <div class="container-fluid">
-                                    <div class="col-md-10">
-                                        <input type="text" class="form-control" ng-model="message" placeholder="Enter message">
+            <div class="col-md-8">
+                <iframe src="http://localhost:8081/unity" style="width:100%; height:1000px"></iframe>
+            </div>
+            <div class="col-md-4">
+                <div ng-controller="CfChatCtrl" ng-init="connect()">
+                        <div class="col-md-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <form role="form">
+                                        <div class="container-fluid">
+                                            <div class="col-md-10">
+                                                <input type="text" class="form-control" ng-model="message" placeholder="Enter message">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button class="btn btn-primary" ng-click="sendName()">Send</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="panel-body">
+                                    <div ng-repeat="msg in msgs ">
+                                    <p>
+                                    <div class="container-fluid">
+                                        <div class="col-md-4">
+                                            <strong style="color:#428bca">{{msg.timestamp | date:'yyyy-MM-dd HH:mm:ss'}}</strong>
+                                            <br/>
+                                            <strong>{{msg.sender}}</strong></div>
+                                        <div class="col-md-8">
+                                            {{msg.message}}
+                                        </div>
                                     </div>
-                                    <div class="col-md-2">
-                                        <button class="btn btn-primary" ng-click="sendName()">Send</button>
+                                    </p>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                        <div class="panel-body">
-                            <div ng-repeat="msg in msgs ">
-                            <p>
-                            <div class="container-fluid">
-                                <div class="col-md-4">
-                                    <strong style="color:#428bca">{{msg.timestamp | date:'yyyy-MM-dd HH:mm:ss'}}</strong>
-                                    <br/>
-                                    <strong>{{msg.sender}}</strong></div>
-                                <div class="col-md-8">
-                                    {{msg.message}}
-                                </div>
                             </div>
-                            </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
+                </div>
             </div>
         </div>
 
