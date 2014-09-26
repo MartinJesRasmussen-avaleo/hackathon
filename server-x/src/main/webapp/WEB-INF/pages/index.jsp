@@ -13,12 +13,12 @@
 
     </header>
     <body>
-            <div class="col-md-8">
-                <iframe src="http://localhost:8081/unity" style="width:100%; height:1000px"></iframe>
+            <div class="col-md-8" style="padding: 0px;">
+                <iframe src="http://localhost:8081/unity" style="width:100%; height:990px"></iframe>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4" style="padding: 0px;">
                 <div ng-controller="CfChatCtrl" ng-init="connect()">
-                        <div class="col-md-12">
+                        <div class="col-md-12" style="padding: 0px;">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <form role="form">
