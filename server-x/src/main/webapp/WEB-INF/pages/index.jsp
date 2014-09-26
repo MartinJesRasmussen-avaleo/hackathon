@@ -13,8 +13,6 @@
 
     </header>
     <body>
-
-
         <div ng-controller="CfChatCtrl" ng-init="connect()">
         <br/>
             <div class="container">
@@ -121,6 +119,7 @@
                 $scope.showMessage = function (message) {
                     var msg = angular.fromJson(message)
                     $scope.msgs.push(msg);
+                    $scope.$apply();
                 }
             });
         </script>
