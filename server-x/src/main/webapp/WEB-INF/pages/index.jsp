@@ -31,7 +31,7 @@
                             </form>
                         </div>
                         <div class="panel-body">
-                            <div ng-repeat="msg in msgs | orderBy: 'timestamp' : true">
+                            <div ng-repeat="msg in msgs ">
                             <p>
                             <div class="container-fluid">
                                 <div class="col-md-5">
@@ -61,10 +61,6 @@
 
                 $scope.setConnected = function (connected) {
                     $scope.connected = connected;
-                    // document.getElementById('connect').disabled = connected;
-                    // document.getElementById('disconnect').disabled = !connected;
-                    // document.getElementById('conversationDiv').style.visibility = connected ? 'visible' : 'hidden';
-                    // document.getElementById('response').innerHTML = '';
                 }
 
                 $scope.connect = function () {
@@ -78,7 +74,6 @@
                                console.log('Connection open!');
                                $scope.setConnected(true);
                                socket.send(JSON.stringify({ 'message': 'message' }));
-
                           }
 
                           socket.onclose = function() {
@@ -87,8 +82,6 @@
 
                           socket.onmessage = function (evt) {
                               var received_msg = evt.data;
-                              console.log(received_msg);
-                              console.log('message received!');
                               $scope.showMessage(received_msg);
                           }
 
@@ -103,23 +96,21 @@
                 }
 
                 $scope.sendName = function() {
-                    // var message = document.getElementById('message').value;
-                    //socket.send(JSON.stringify({ 'message': 'message' }));
-
                     var params = {
                         sender:'Eva Vejstrup',
                         message:$scope.message,
                         timestamp:Date.now()
                     };
                     $http.post('/server-x/event',params).success(function(data){
-                        console.log("REQUEST SUCCESS");
+                        console.log("SENDING: " + angular.toJson(params));
                     });
                 }
 
                 $scope.showMessage = function (message) {
                     var msg = angular.fromJson(message)
-                    $scope.msgs.push(msg);
+                    $scope.msgs.unshift(msg);
                     $scope.$apply();
+                    console.log('RECEIVED MESSAGE: ' + message);
                 }
             });
         </script>
