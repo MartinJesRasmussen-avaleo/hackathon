@@ -34,11 +34,11 @@
                             <div ng-repeat="msg in msgs ">
                             <p>
                             <div class="container-fluid">
-                                <div class="col-md-5">
-                                    <strong style="color:#428bca">{{msg.timestamp}}</strong>
+                                <div class="col-md-4">
+                                    <strong style="color:#428bca">{{msg.timestamp | date:'yyyy-MM-dd HH:mm:ss'}}</strong>
                                     <br/>
                                     <strong>{{msg.sender}}</strong></div>
-                                <div class="col-md-7">
+                                <div class="col-md-8">
                                     {{msg.message}}
                                 </div>
                             </div>
